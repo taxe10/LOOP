@@ -1,5 +1,6 @@
-op=0;
-want_to_save_region_specific_csv=0;
+clear
+close all
+clc
 %Load data
 load('Mouse5B_Fresh.mat')   %Change to Mouse5B_Block.mat for block data
 type_data = 'MOUSE';
@@ -51,7 +52,6 @@ mc_samples_store_mean=out.a/scale;
 mc_samples_store_var=out.b/(scale^2);
 mc_samples_store_p=out.c;
 indicator = out.d;
-k_actual=k;
 indicator_proportion=indicator/nsample;
 [max_num, max_idx]=max(indicator_proportion'); %max per row
 indicator_modal_class=ind2sub(size(indicator_proportion'),max_idx); %position instead of number
