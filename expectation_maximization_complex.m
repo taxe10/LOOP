@@ -15,9 +15,15 @@ end
 m = 1;
 L(m) = sum(log(sum(den)))/n;     %Likelihood
 z = cluster_index;            %Latent variable
+region = 1:k;
 while 1
     m = m+1;
     gamma = (den ./ sum(den))';
+    for j = 1:k
+        k_pr = region;
+        k_pr(j) = [];
+        gamma(find(sum(gamma(:,k_pr),2)==1),j) = 0;
+    end
     nj = sum(gamma)';
     p = nj / n;
     mu = ((gamma'*data)'./ nj')';
