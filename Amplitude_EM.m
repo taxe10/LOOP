@@ -1,5 +1,6 @@
-op=0;
-want_to_save_region_specific_csv=0;
+close all
+clear
+clc
 %Load data
 load('Mouse5B_Fresh.mat')   %Change to Mouse5B_Block.mat for block data
 type_data = 'MOUSE';
@@ -15,7 +16,7 @@ raw_fft = fft(ScanData,L,3);
 response = abs(raw_fft(:,:,1:L/2)/L); %Normalized
 data_case='5B';
 distr ='NORMAL';
-k=2;
+k=2;                            %Number of regions
 data_red = 'LOOP';
 %Dimension
 dim = 2;
