@@ -2,6 +2,7 @@ A) DATASET:
 The dataset is available as .RAR files in 2 parts each. Make sure to unzip the files before executing the codes.
   1. Fresh THz data: Mouse5B_Fresh.mat
   2. Block THz data: Mouse5B_Block.mat
+  
 Dataset description:
   1. ScanData: matrix with dimensions <y,x,t> representing the data of the THz scan. y and x are the positions of the scan where a signal
                was received while t is the 1024-point time-domain signal received at that position. Generally our basic imaging consists of
