@@ -15,18 +15,22 @@ Dataset description:
   7. matrix_key_tissue: matrix with dimensions <k_original,c>, where c corresponds to the length of the string. Each row corresponds to
                         the name that was given to each region and it follows the same order given in matrix_key_number, i.e., the
                         matrix_key_number = 1 for matrix_key_tissue = CANCER.
+
 B) MAIN FILES:
   1. Amplitude_MCMC: MCMC algorithm that utilizes the amplitude spectrum of the THz data.
   2. Amplitude_EM: EM algorithm that utilizes the amplitude spectrum of the THz data.
   3. Complex_MCMC: MCMC algorithm that utilizes the complex spectrum of the THz data.
   4. Complex_EM: EM algorithm that utilizes the complex spectrum of the THz data.
+
 C) HOW TO RUN:
   1. Download all the files in the repository and save them in the same folder.
   2. Unzip the data files and make sure their names match the description in part A.
   3. Run one of the main files.
   4. Select the directory where you would like to save the results.
+
 D) CHANGES
 To make any changes to the files, please refer to the comments included in the scripts.
+
 E) CONTACT INFORMATION
 Tanny Chavez Esparza
 email: tachavez@email.uark.edu
