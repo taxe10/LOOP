@@ -8,12 +8,12 @@ type_tissue = 'FRESH';      %Change to BLOCK for block data
 Fs = 1 / (trange(2)-trange(1)); % Sampling frequency       
 L = length(trange);             % Length of signal
 f = Fs*(0:((L/2)-1))/L;
-[c,n1]=min(abs(f-0.1E12));      % Calculate the window range 0.5-2THz
+[c,n1]=min(abs(f-0.1E12));      % Calculate the window range 0.1-4THz
 [c,n2]=min(abs(f-4E12));
 %Frequency domain
 raw_fft = fft(ScanData,L,3);
 response = abs(raw_fft(:,:,1:L/2)/L); %Normalized
-data_case='MOUSE5B';
+data_case='5B';
 distr ='NORMAL';
 k=2;                            %Number of regions
 data_red = 'LOOP';
