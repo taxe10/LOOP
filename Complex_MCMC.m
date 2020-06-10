@@ -1,9 +1,10 @@
-op=0;
-want_to_save_region_specific_csv=0;
+close all
+clear
+clc
 %Load data
-load('HumanND10898_Fresh.mat')
-type_data = 'HUMAN';
-type_tissue = 'FRESH';
+load('Mouse5B_Fresh.mat')   %Change to Mouse5B_Block.mat for block data
+type_data = 'MOUSE';
+type_tissue = 'FRESH';      %Change to BLOCK for block data
 %Prepare the data
 Fs = 1 / (trange(2)-trange(1)); % Sampling frequency       
 L = length(trange);             % Length of signal
@@ -13,15 +14,15 @@ f = Fs*(0:((L/2)-1))/L;
 %Frequency domain
 raw_fft = fft(ScanData,L,3);
 response = raw_fft(:,:,1:L/2)/L; %Normalized
-data_case='ND10898';
+data_case='5B';
 distr ='NORMAL';
-k=3;
+k=2;                            %Number of regions
 data_red = 'LOOP';
 %Dimension
-dim = 4;
+dim = 2;
 %Define save path
 filename0=char(strcat(num2str(k),{'_'},lower(distr),{'_components_for_'},lower(type_data),{'_'},data_case,{'_'},lower(type_tissue)));
-[filename,path] = uiputfile(strcat(filename0,'.fig'),'SAVE MESHES AS:');
+[filename,path] = uiputfile(strcat(filename0,'.fig'),'SAVE AS:');
 
 rng default     % For reproducibility
 %Prepare data for mixture
@@ -51,9 +52,6 @@ mc_samples_store_mean=out.a/scale;
 mc_samples_store_var=out.b/(scale^2);
 mc_samples_store_p=out.c;
 indicator = out.d;
-k_actual=k;
-order = [3,1,2];
-indicator = indicator(:,order);
 indicator_proportion=indicator/nsample;
 [max_num, max_idx]=max(indicator_proportion'); %max per row
 indicator_modal_class=ind2sub(size(indicator_proportion'),max_idx); %position instead of number
