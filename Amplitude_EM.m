@@ -1,9 +1,9 @@
 op=0;
 want_to_save_region_specific_csv=0;
 %Load data
-load('Mouse5B_Fresh.mat')
+load('Mouse5B_Fresh.mat')   %Change to Mouse5B_Block.mat for block data
 type_data = 'MOUSE';
-type_tissue = 'FRESH';
+type_tissue = 'FRESH';      %Change to BLOCK for block data
 %Prepare the data
 Fs = 1 / (trange(2)-trange(1)); % Sampling frequency       
 L = length(trange);             % Length of signal
