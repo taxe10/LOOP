@@ -1,28 +1,28 @@
-op=0;
-want_to_save_region_specific_csv=0;
+clear
+close all
+clc
 %Load data
-load('HumanND10898_Fresh.mat')
-type_data = 'HUMAN';
-type_tissue = 'FRESH';
+load('Mouse5B_Fresh.mat')   %Change to Mouse5B_Block.mat for block data
+type_data = 'MOUSE';
+type_tissue = 'FRESH';      %Change to BLOCK for block data
 %Prepare the data
 Fs = 1 / (trange(2)-trange(1)); % Sampling frequency       
 L = length(trange);             % Length of signal
 f = Fs*(0:((L/2)-1))/L;
-[c,n1]=min(abs(f-0.1E12));      % Calculate the window range 0.5-2THz
+[c,n1]=min(abs(f-0.1E12));      % Calculate the window range 0.1-4THz
 [c,n2]=min(abs(f-4E12));
 %Frequency domain
 raw_fft = fft(ScanData,L,3);
 response = raw_fft(:,:,1:L/2)/L; %Normalized
-data_case='ND10898';
+data_case='5B';
 distr ='NORMAL';
-k=3;
+k=2;
 data_red = 'LOOP';
 %Dimension
-dim = 4 ;
+dim = 2;
 %Define save path
 filename0=char(strcat(num2str(k),{'_'},lower(distr),{'_components_for_'},lower(type_data),{'_'},data_case,{'_'},lower(type_tissue)));
-[filename,path] = uiputfile(strcat(filename0,'.fig'),'SAVE MESHES AS:');
-
+[filename,path] = uiputfile(strcat(filename0,'.fig'),'SAVE AS:');
 rng default     % For reproducibility
 %Prepare data for mixture
 mask_original = flipud(matrix);
@@ -45,8 +45,7 @@ mu = out.a;
 sigma = out.b;
 p = out.c;
 gamma = out.d;
-order = [3,1,2];
-indicator_proportion = gamma(:,order);
+indicator_proportion = gamma;
 [max_num, max_idx]=max(indicator_proportion'); %max per row
 indicator_modal_class=ind2sub(size(indicator_proportion'),max_idx); %position instead of number
 indicator_proportion_intermediate=repmat(NaN,n_x*n_y,k);
