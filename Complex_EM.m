@@ -16,7 +16,7 @@ raw_fft = fft(ScanData,L,3);
 response = raw_fft(:,:,1:L/2)/L; %Normalized
 data_case='5B';
 distr ='NORMAL';
-k=2;
+k=2;                            %Number of regions
 data_red = 'LOOP';
 %Dimension
 dim = 2;
