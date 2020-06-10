@@ -1,8 +1,8 @@
 op=0;
 want_to_save_region_specific_csv=0;
 %Load data
-load('HumanND10898_Fresh.mat')
-type_data = 'HUMAN';
+load('Mouse5B_Fresh.mat')
+type_data = 'MOUSE';
 type_tissue = 'FRESH';
 %Prepare the data
 Fs = 1 / (trange(2)-trange(1)); % Sampling frequency       
@@ -13,7 +13,7 @@ f = Fs*(0:((L/2)-1))/L;
 %Frequency domain
 raw_fft = fft(ScanData,L,3);
 response = abs(raw_fft(:,:,1:L/2)/L); %Normalized
-data_case='ND10898';
+data_case='5B';
 distr ='NORMAL';
 k=3;
 data_red = 'LOOP';
