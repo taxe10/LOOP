@@ -15,14 +15,13 @@ raw_fft = fft(ScanData,L,3);
 response = abs(raw_fft(:,:,1:L/2)/L); %Normalized
 data_case='5B';
 distr ='NORMAL';
-k=3;
+k=2;
 data_red = 'LOOP';
 %Dimension
 dim = 2;
 %Define save path
 filename0=char(strcat(num2str(k),{'_'},lower(distr),{'_components_for_'},lower(type_data),{'_'},data_case,{'_'},lower(type_tissue)));
 [filename,path] = uiputfile(strcat(filename0,'.fig'),'SAVE MESHES AS:');
-
 rng default     % For reproducibility
 %Prepare data for mixture
 mask_original = flipud(matrix);
