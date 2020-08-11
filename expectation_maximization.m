@@ -20,8 +20,9 @@ while 1
     for j = 1:k
         k_pr = region;
         k_pr(j) = [];
-        gamma(find(sum(gamma(:,k_pr),2)==1),j) = 0;
+        gamma(find(sum(gamma(:,k_pr),2)>=1),j) = 0;
     end
+    gamma = gamma./sum(gamma,2);
     nj = sum(gamma)';
     p = nj / n;
     mu = ((gamma'*data)'./ nj')';
